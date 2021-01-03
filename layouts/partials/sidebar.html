@@ -3,15 +3,21 @@
     <div class="sidebar-about">
       {{ with .Site.Params.gravatar }}
       <div class="author-image">
-        <img src="https://www.gravatar.com/avatar/{{md5 .}}?s=200&d=mp" class="img-circle img-headshot center" alt="Gravatar">
+        <img
+          src="https://www.gravatar.com/avatar/{{md5 .}}?s=200&d=mp"
+          class="img-circle img-headshot center"
+          alt="Gravatar"
+        />
       </div>
-      {{ else }}
-        {{ with .Site.Params.profilePicture }}
-        <div class="author-image">
-          <img src="{{ . | relURL }}" class="img-circle img-headshot center" alt="Profile Picture">
-        </div>
-        {{ end }}
-      {{ end }}
+      {{ else }} {{ with .Site.Params.profilePicture }}
+      <div class="author-image">
+        <img
+          src="{{ . | relURL }}"
+          class="img-circle img-headshot center"
+          alt="Profile Picture"
+        />
+      </div>
+      {{ end }} {{ end }}
 
       <h1>{{ .Site.Title }}</h1>
 
@@ -34,8 +40,14 @@
     </nav>
 
     <section class="social-icons">
+      <p>Get updates on:</p>
       {{ range $item := .Site.Params.socialIcons }}
-      <a href="{{ $item.url }}" rel="me" title="{{ $item.title }}" target="_blank">
+      <a
+        href="{{ $item.url }}"
+        rel="me"
+        title="{{ $item.title }}"
+        target="_blank"
+      >
         <i class="fab {{ $item.icon }}" aria-hidden="true"></i>
       </a>
       {{ end }}
